@@ -1,28 +1,29 @@
-Example: 1
+Example: 2
 
 Requirement:
 
-When Incident Form Loaded then some filed are make Mandatory or Read Only or Visible /Invisible and add an Information Message to define fill all mandatory  fields
-1. Number and Priority Fields are Read only
-2. Caller and Short Description fields are Mandatory
-3. Configuration Item field should not be seen (Invisible) and On Hold Reason should be seen (visible)
-4. Display an Information Message top on the form if the record is new
-
-Client Script Type: OnLoad
+1. When Incident State is On-Hold Then On Hold Reason field should be Visible and Mandatory
+2. Add warning message below hold reason field that is "Please select at least one hold reason"
+Client Script Type:OnChange
 
 Answer:
 
-function onLoad() {
-
-    if (g_form.isNewRecord()) {
-
-        g_form.addInfoMessage('Please Fill All Mandatory Fields');
-        g_form.setDisabled('number', true);
-        g_form.setDisabled('priority', true);
-        g_form.setMandatory('caller_id', true);
-        g_form.setMandatory('short_description', true);
-        g_form.setVisible('cmdb_ci', false);
-        //g_form.setVisible('hold_reason', true);
+function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    if (isLoading || newValue === '') {
+        return;
     }
-}
 
+    if (newValue == 3) {
+        g_form.setMandatory('hold_reason', true);
+        g_form.showFieldMsg('hold_reason', 'Please select at least one hold reason');
+        g_form.setDisplay('hold_reason', true);
+
+    } else {
+
+        g_form.setMandatory('hold_reason', false);
+        g_form.setDisplay('hold_reason', false);
+
+    }
+    //Type appropriate comment here, and begin script below
+
+}
