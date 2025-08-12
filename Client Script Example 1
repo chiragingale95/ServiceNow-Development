@@ -1,1 +1,28 @@
+Example: 1
+
+Requirement:
+
+When Incident Form Loaded then some filed are make Mandatory or Read Only or Visible /Invisible and add an Information Message to define fill all mandatory  fields
+1. Number and Priority Fields are Read only
+2. Caller and Short Description fields are Mandatory
+3. Configuration Item field should not be seen (Invisible) and On Hold Reason should be seen (visible)
+4. Display an Information Message top on the form if the record is new
+
+Client Script Type: OnLoad
+
+Answer:
+
+function onLoad() {
+
+    if (g_form.isNewRecord()) {
+
+        g_form.addInfoMessage('Please Fill All Mandatory Fields');
+        g_form.setDisabled('number', true);
+        g_form.setDisabled('priority', true);
+        g_form.setMandatory('caller_id', true);
+        g_form.setMandatory('short_description', true);
+        g_form.setVisible('cmdb_ci', false);
+        //g_form.setVisible('hold_reason', true);
+    }
+}
 
