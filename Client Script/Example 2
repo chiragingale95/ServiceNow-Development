@@ -23,7 +23,6 @@ function onChange(control, oldValue, newValue, isLoading, isTemplate) {
         g_form.setMandatory('hold_reason', false);
         g_form.setDisplay('hold_reason', false);
 
-    }
-    
+    }    
 
 }
