@@ -24,6 +24,6 @@ function onChange(control, oldValue, newValue, isLoading, isTemplate) {
         g_form.setDisplay('hold_reason', false);
 
     }
-    //Type appropriate comment here, and begin script below
+    
 
 }
