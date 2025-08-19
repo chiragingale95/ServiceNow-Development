@@ -13,6 +13,7 @@ function onSubmit() {
    if(critical == 1){
 
     return confirm(getMessage('Are you submitting priority one ticket'));
+
    }
 
 }
