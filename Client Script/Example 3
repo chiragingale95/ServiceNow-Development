@@ -1,0 +1,18 @@
+Example: 3 
+Requirement:
+Any customer after submitted (Priority 1-Critcal) incident 
+1. We need to display one alert message to customer about Criticality (Are you submitting Priority one ticket)
+2. Include Ok and Cancel Buttons also.
+Client Script Type : OnSubmit
+
+Answer:
+function onSubmit() {
+   
+   var critical = g_form.getValue('priority');
+
+   if(critical == 1){
+
+    return confirm(getMessage('Are you submitting priority one ticket'));
+   }
+
+}
